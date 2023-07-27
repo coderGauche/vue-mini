@@ -1,0 +1,40 @@
+<!--
+ * @Author: Gauche楽
+ * @Date: 2023-07-26 17:59:23
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-07-27 02:56:06
+ * @FilePath: /vue-next-mini/packages/vue/examples/reactivity/reactive.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../dist//vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p id="p1"></p>
+        <p id="p2"></p>
+    </div>
+    <script>
+        const { reactive, effect } = Vue
+        const obj = reactive({
+            name: '张珊'
+        })
+        effect(() => {
+            document.querySelector('#p1').innerHTML = obj.name
+        })
+        effect(() => {
+            document.querySelector('#p2').innerHTML = obj.name
+        })
+        setTimeout(() => {
+            obj.name = '张 右'
+        }, 2000);
+    </script>
+</body>
+
+</html>

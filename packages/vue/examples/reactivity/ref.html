@@ -1,0 +1,33 @@
+<!--
+ * @Author: Gauche楽
+ * @Date: 2023-07-27 15:24:23
+ * @LastEditors: Gauche楽
+ * @LastEditTime: 2023-07-27 19:21:08
+ * @FilePath: /vue-next-mini/packages/vue/examples/reactivity/ref.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../dist//vue.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        const { ref, effect } = Vue
+        const refObj = ref('yl')
+        effect(() => {
+            document.querySelector('#app').innerHTML = refObj.value
+        })
+
+        setTimeout(() => {
+            refObj.value = 'xxxx'
+        }, 2000)
+    </script>
+</body>
+
+</html>
